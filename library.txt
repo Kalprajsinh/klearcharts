@@ -1,0 +1,56 @@
+npm init         
+npm install --save-dev @rollup/plugin-babel @rollup/plugin-typescript @types/react react react-dom rollup tslib
+npm install typescript      
+
+//package.json
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+
+    "scripts": {
+        "build": "npx rollup -c"
+    },
+
+//rollup.config.mjs
+    import { defineConfig } from "rollup";
+    import typescript from "@rollup/plugin-typescript";
+
+    export default defineConfig({
+    input: "src/index.ts",
+    output: {
+        dir: "dist",
+        format: "es",
+        name: "pack-to-ui",
+    },
+    external: ["react", "react-dom"],
+    plugins: [typescript({ tsconfig: "tsconfig.json" })],
+    });
+
+//tsconfig.json
+    {
+    "compilerOptions": {
+        "jsx": "react",
+        "target": "ES2020",
+        "module": "ESNext",
+        "declaration": true,
+        "declarationDir": "dist",
+        "strict": true
+    }
+    }
+
+//src/componects/barchat.tsx
+    import * as React from "react";
+
+    function GenerateBarChartSVG({ data, height = 200, width = 400, barColor = '#4f46e5', hoverColor = '#3b82f6', string = false }: {
+        data: number[];
+        height?: number;
+        width?: number;
+        barColor?: string;
+        hoverColor?: string;
+        string?: boolean;
+    }) {
+
+        return svgContent;
+    }
+
+//src/index.ts
+    export * from "./components/barchart";
