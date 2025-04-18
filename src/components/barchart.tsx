@@ -1,6 +1,6 @@
 import * as React from "react";
 
-function GenerateBarChartSVG({ data, height = 200, width = 400, barColor = '#4f46e5',animate, string = false }: {
+function BarChart({ data, height = 200, width = 400, barColor = '#4f46e5',animate, string = false }: {
   data: number[];
   height?: number;
   width?: number;
@@ -32,7 +32,27 @@ function GenerateBarChartSVG({ data, height = 200, width = 400, barColor = '#4f4
     const finalY = height - padding - barHeight;
     const duration = 0.5 + index * 0.1; // stagger animation for effect
 
-    svgContent += `<rect x="${x}" y="${animate ? height - padding : finalY}" width="${barWidth}" height="${animate ? 0 : barHeight}" fill="${barColor}" rx="4">`;
+    svgContent += `<rect 
+      x="${x}" 
+      y="${animate ? height - padding : finalY}" 
+      width="${barWidth}" 
+      height="${animate ? 0 : barHeight}" 
+      fill="${barColor}" 
+      rx="4"
+      onmouseenter="
+        const tooltip = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        tooltip.innerHTML = \`
+          <rect x='${x + barWidth/2 - 30}' y='${finalY - 30}' width='60' height='25' fill='#1f2937' rx='4'/>
+          <text x='${x + barWidth/2}' y='${finalY - 15}' text-anchor='middle' font-size='12' fill='white'>
+            ${value}
+          </text>
+        \`;
+        this.parentNode.appendChild(tooltip);
+        this.addEventListener('mouseleave', () => {
+          this.setAttribute('fill', '${barColor}');
+          this.parentNode.removeChild(tooltip);
+        });"
+    >`;
 
     if (animate) {
       svgContent += `
@@ -57,4 +77,4 @@ function GenerateBarChartSVG({ data, height = 200, width = 400, barColor = '#4f4
   }
 }
 
-export {GenerateBarChartSVG};
+export {BarChart};

@@ -1,6 +1,6 @@
 {
   "name": "klearcharts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SVG-based, very lightweight charting library designed for simplicity, high performance, and easy customization.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -4,13 +4,9 @@ import {
   BarChart,
   LineChart,
   PieChart,
-  BubbleChart,
+  ScatterPlot,
   Histogram,
   WaterfallChart,
-  RadarChart,
-  BoxplotChart,
-  GanttChart,
-  GenerateBarChartSVG
 } from '../..';
 import Testimonial from './Testimonial';
 
@@ -20,13 +16,36 @@ function App() {
   const barData = [45, 75, 35, 90, 60, 80, 25]
 
   const lineData = [
-    { x: 0, y: 20 },
-    { x: 1, y: 45 },
-    { x: 2, y: 30 },
-    { x: 3, y: 60 },
-    { x: 4, y: 40 },
-    { x: 5, y: 70 },
-    { x: 6, y: 55 },
+    { x: 10, y: 20, label: "Item A" },
+    { x: 25, y: 40, label: "Item B" },
+    { x: 40, y: 30, label: "Item C" },
+    { x: 60, y: 50, label: "Item D" },
+    { x: 80, y: 15, label: "Item E" },
+    { x: 50, y: 70, label: "Item F" },
+    { x: 15, y: 35, label: "Item G" },
+    { x: 30, y: 55, label: "Item H" },
+    { x: 45, y: 25, label: "Item I" },
+    { x: 70, y: 60, label: "Item J" },
+    { x: 90, y: 10, label: "Item K" },
+    { x: 35, y: 65, label: "Item L" },
+    { x: 20, y: 45, label: "Item M" },
+    { x: 55, y: 20, label: "Item N" },
+    { x: 65, y: 40, label: "Item O" },
+    { x: 75, y: 30, label: "Item P" },
+    { x: 85, y: 50, label: "Item Q" },
+    { x: 95, y: 70, label: "Item R" },
+    { x: 5,  y: 10, label: "Item S" },
+    { x: 12, y: 22, label: "Item T" },
+    { x: 28, y: 38, label: "Item U" },
+    { x: 38, y: 28, label: "Item V" },
+    { x: 48, y: 48, label: "Item W" },
+    { x: 58, y: 58, label: "Item X" },
+    { x: 68, y: 18, label: "Item Y" },
+    { x: 78, y: 68, label: "Item Z" },
+    { x: 88, y: 38, label: "Item AA" },
+    { x: 98, y: 8,  label: "Item AB" },
+    { x: 33, y: 33, label: "Item AC" },
+    { x: 43, y: 63, label: "Item AD" }
   ]
 
   const pieData = [
@@ -48,15 +67,67 @@ function App() {
   ]
 
   const areaData = [
-    { x: 0, y: 20 },
-    { x: 1, y: 35 },
-    { x: 2, y: 25 },
-    { x: 3, y: 40 },
-    { x: 4, y: 30 },
-    { x: 5, y: 50 },
-    { x: 6, y: 35 },
-    { x: 7, y: 60 },
-    { x: 8, y: 45 },
+    { x: 10, y: 20, label: "Item A" },
+    { x: 25, y: 40, label: "Item B" },
+    { x: 40, y: 30, label: "Item C" },
+    { x: 60, y: 50, label: "Item D" },
+    { x: 80, y: 15, label: "Item E" },
+    { x: 50, y: 70, label: "Item F" },
+    { x: 15, y: 35, label: "Item G" },
+    { x: 30, y: 55, label: "Item H" },
+    { x: 45, y: 25, label: "Item I" },
+    { x: 70, y: 60, label: "Item J" },
+    { x: 90, y: 10, label: "Item K" },
+    { x: 35, y: 65, label: "Item L" },
+    { x: 20, y: 45, label: "Item M" },
+    { x: 55, y: 20, label: "Item N" },
+    { x: 65, y: 40, label: "Item O" },
+    { x: 75, y: 30, label: "Item P" },
+    { x: 85, y: 50, label: "Item Q" },
+    { x: 95, y: 70, label: "Item R" },
+    { x: 5,  y: 10, label: "Item S" },
+    { x: 12, y: 22, label: "Item T" },
+    { x: 28, y: 38, label: "Item U" },
+    { x: 38, y: 28, label: "Item V" },
+    { x: 48, y: 48, label: "Item W" },
+    { x: 58, y: 58, label: "Item X" },
+    { x: 68, y: 18, label: "Item Y" },
+    { x: 78, y: 68, label: "Item Z" },
+    { x: 88, y: 38, label: "Item AA" },
+    { x: 98, y: 8,  label: "Item AB" },
+    { x: 33, y: 33, label: "Item AC" },
+    { x: 43, y: 63, label: "Item AD" },
+    { x: 10+2, y: 20+2, label: "Item A" },
+    { x: 25+2, y: 40+2, label: "Item B" },
+    { x: 40+2, y: 30+2, label: "Item C" },
+    { x: 60+2, y: 50+2, label: "Item D" },
+    { x: 80+2, y: 15+2, label: "Item E" },
+    { x: 50+2, y: 70+2, label: "Item F" },
+    { x: 15+2, y: 35+2, label: "Item G" },
+    { x: 30+2, y: 55+2, label: "Item H" },
+    { x: 45+2, y: 25+2, label: "Item I" },
+    { x: 70+2, y: 60+2, label: "Item J" },
+    { x: 90+2, y: 10+2, label: "Item K" },
+    { x: 35+2, y: 65+2, label: "Item L" },
+    { x: 20+2, y: 45+2, label: "Item M" },
+    { x: 55+2, y: 20+2, label: "Item N" },
+    { x: 65+2, y: 40+2, label: "Item O" },
+    { x: 75+2, y: 30+2, label: "Item P" },
+    { x: 85+2, y: 50+2, label: "Item Q" },
+    { x: 95+2, y: 70+2, label: "Item R" },
+    { x: 5+2,  y: 10+2, label: "Item S" },
+    { x: 12+2, y: 22+2, label: "Item T" },
+    { x: 28+2, y: 38+2, label: "Item U" },
+    { x: 38+2, y: 28+2, label: "Item V" },
+    { x: 48+2, y: 48+2, label: "Item W" },
+    { x: 58+2, y: 58+2, label: "Item X" },
+    { x: 68+2, y: 18+2, label: "Item Y" },
+    { x: 78+2, y: 68+2, label: "Item Z" },
+    { x: 88+2, y: 38+2, label: "Item AA" },
+    { x: 98+2, y: 8+2,  label: "Item AB" },
+    { x: 33+2, y: 33+2, label: "Item AC" },
+    { x: 43+2, y: 63+2, label: "Item AD" }
+        
   ]
 
   const histogramData = [
@@ -73,24 +144,69 @@ function App() {
     { label: "Total", value: 700 },
   ]
 
-  const radarData = [
-    [
-      { axis: "Speed", value: 80 },
-      { axis: "Reliability", value: 70 },
-      { axis: "Comfort", value: 90 },
-      { axis: "Safety", value: 85 },
-      { axis: "Efficiency", value: 65 },
-      { axis: "Design", value: 75 },
-    ],
-    [
-      { axis: "Speed", value: 65 },
-      { axis: "Reliability", value: 90 },
-      { axis: "Comfort", value: 75 },
-      { axis: "Safety", value: 95 },
-      { axis: "Efficiency", value: 85 },
-      { axis: "Design", value: 60 },
-    ],
-  ]
+  const Stdata = [
+    { x: 10, y: 20, label: "Item A" },
+    { x: 25, y: 40, label: "Item B" },
+    { x: 40, y: 30, label: "Item C" },
+    { x: 60, y: 50, label: "Item D" },
+    { x: 80, y: 15, label: "Item E" },
+    { x: 50, y: 70, label: "Item F" },
+    { x: 15, y: 35, label: "Item G" },
+    { x: 30, y: 55, label: "Item H" },
+    { x: 45, y: 25, label: "Item I" },
+    { x: 70, y: 60, label: "Item J" },
+    { x: 90, y: 10, label: "Item K" },
+    { x: 35, y: 65, label: "Item L" },
+    { x: 20, y: 45, label: "Item M" },
+    { x: 55, y: 20, label: "Item N" },
+    { x: 65, y: 40, label: "Item O" },
+    { x: 75, y: 30, label: "Item P" },
+    { x: 85, y: 50, label: "Item Q" },
+    { x: 95, y: 70, label: "Item R" },
+    { x: 5,  y: 10, label: "Item S" },
+    { x: 12, y: 22, label: "Item T" },
+    { x: 28, y: 38, label: "Item U" },
+    { x: 38, y: 28, label: "Item V" },
+    { x: 48, y: 48, label: "Item W" },
+    { x: 58, y: 58, label: "Item X" },
+    { x: 68, y: 18, label: "Item Y" },
+    { x: 78, y: 68, label: "Item Z" },
+    { x: 88, y: 38, label: "Item AA" },
+    { x: 98, y: 8,  label: "Item AB" },
+    { x: 33, y: 33, label: "Item AC" },
+    { x: 43, y: 63, label: "Item AD" },
+    { x: 10+2, y: 20+2, label: "Item A" },
+    { x: 25+2, y: 40+2, label: "Item B" },
+    { x: 40+2, y: 30+2, label: "Item C" },
+    { x: 60+2, y: 50+2, label: "Item D" },
+    { x: 80+2, y: 15+2, label: "Item E" },
+    { x: 50+2, y: 70+2, label: "Item F" },
+    { x: 15+2, y: 35+2, label: "Item G" },
+    { x: 30+2, y: 55+2, label: "Item H" },
+    { x: 45+2, y: 25+2, label: "Item I" },
+    { x: 70+2, y: 60+2, label: "Item J" },
+    { x: 90+2, y: 10+2, label: "Item K" },
+    { x: 35+2, y: 65+2, label: "Item L" },
+    { x: 20+2, y: 45+2, label: "Item M" },
+    { x: 55+2, y: 20+2, label: "Item N" },
+    { x: 65+2, y: 40+2, label: "Item O" },
+    { x: 75+2, y: 30+2, label: "Item P" },
+    { x: 85+2, y: 50+2, label: "Item Q" },
+    { x: 95+2, y: 70+2, label: "Item R" },
+    { x: 5+2,  y: 10+2, label: "Item S" },
+    { x: 12+2, y: 22+2, label: "Item T" },
+    { x: 28+2, y: 38+2, label: "Item U" },
+    { x: 38+2, y: 28+2, label: "Item V" },
+    { x: 48+2, y: 48+2, label: "Item W" },
+    { x: 58+2, y: 58+2, label: "Item X" },
+    { x: 68+2, y: 18+2, label: "Item Y" },
+    { x: 78+2, y: 68+2, label: "Item Z" },
+    { x: 88+2, y: 38+2, label: "Item AA" },
+    { x: 98+2, y: 8+2,  label: "Item AB" },
+    { x: 33+2, y: 33+2, label: "Item AC" },
+    { x: 43+2, y: 63+2, label: "Item AD" }
+  ];
+  
 
   const boxplotData = [
     {
@@ -174,13 +290,9 @@ function App() {
   hoverColor = "#ffff11"
   animate = {true}
   string = {false} />
-      <GenerateBarChartSVG data={barData} height = {300}
-  width = {600}
-  barColor = "#ffff11"
-  hoverColor = "#ffff11"
-  animate = {true}
-  string = {false} />
+
       <LineChart data={lineData} />
+      <ScatterPlot data={Stdata} />
       <PieChart data={pieData} />
       <PieChart data={pieData} donut={true} />
       <AreaChart
@@ -189,8 +301,8 @@ function App() {
         areaColor="#10b981"
         areaOpacity={0.2}
         pointColor="#059669"
+        width={1000}
       />
-      <BubbleChart data={bubbleData} xAxisLabel="X Axis" yAxisLabel="Y Axis" />
       <Histogram data={histogramData} bins={12} barColor="#8b5cf6" barHoverColor="#7c3aed" />
       <WaterfallChart
         data={waterfallData}
@@ -198,15 +310,7 @@ function App() {
         negativeColor="#ef4444"
         totalColor="#3b82f6"
       />
-      <RadarChart data={radarData} labels={["Model A", "Model B"]} colors={["#3b82f6", "#ef4444"]} />
-      <BoxplotChart data={boxplotData} boxColor="#3b82f6" whiskerColor="#6b7280" outlierColor="#ef4444" />
-      <GanttChart
-        data={ganttData}
-        barHeight={30}
-        barSpacing={15}
-        barColor="#3b82f6"
-        progressColor="#1d4ed8"
-      />
+     
     </div>
   )
 }
