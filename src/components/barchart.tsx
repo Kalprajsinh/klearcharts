@@ -50,8 +50,12 @@ function BarChart({ data, height = 200, width = 400, barColor = '#4f46e5',animat
         this.parentNode.appendChild(tooltip);
         this.addEventListener('mouseleave', () => {
           this.setAttribute('fill', '${barColor}');
-          this.parentNode.removeChild(tooltip);
-        });"
+          if (tooltip.parentNode === this.parentNode) {
+            this.parentNode.removeChild(tooltip);
+          }
+        });
+      "
+
     >`;
 
     if (animate) {

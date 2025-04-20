@@ -136,7 +136,9 @@ export function WaterfallChart({
           this.parentNode.appendChild(tooltip);
           this.addEventListener('mouseleave', () => {
             this.setAttribute('opacity', '1');
-            this.parentNode.removeChild(tooltip);
+            if (tooltip.parentNode === this.parentNode) {
+               this.parentNode.removeChild(tooltip);
+            }
           });"
     `;
 

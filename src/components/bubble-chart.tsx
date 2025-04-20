@@ -113,7 +113,9 @@ export function ScatterPlot({
           this.addEventListener('mouseleave', () => {
             this.setAttribute('stroke-width', '1');
             this.setAttribute('stroke', '${pointColor}');
-            this.parentNode.removeChild(tooltip);
+            if (tooltip.parentNode === this.parentNode) {
+              this.parentNode.removeChild(tooltip);
+            }
           });"
       >`;
 

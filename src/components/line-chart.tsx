@@ -102,7 +102,9 @@ export function LineChart({
         this.parentNode.appendChild(tooltip);
         this.addEventListener('mouseleave', () => {
           this.setAttribute('r', '4');
-          this.parentNode.removeChild(tooltip);
+          if (tooltip.parentNode === this.parentNode) {
+            this.parentNode.removeChild(tooltip);
+          }
         });"`;
       
       if (animate) {

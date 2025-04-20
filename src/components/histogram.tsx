@@ -90,7 +90,9 @@ export function Histogram({
         this.parentNode.appendChild(tooltip);
         this.addEventListener('mouseleave', () => {
           this.setAttribute('fill', '${barColor}');
-          this.parentNode.removeChild(tooltip);
+          if (tooltip.parentNode === this.parentNode) {
+            this.parentNode.removeChild(tooltip);
+          }
         });"
     >`;
 

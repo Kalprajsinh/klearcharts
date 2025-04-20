@@ -1,6 +1,6 @@
 {
   "name": "klearcharts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "SVG-based, very lightweight charting library designed for simplicity, high performance, and easy customization.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -32,9 +32,12 @@
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/react": "^18.2.58",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "rollup": "^4.39.0",
+    "tailwindcss": "^4.1.4",
     "tslib": "^2.8.1"
   },
   "dependencies": {
