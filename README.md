@@ -1,11 +1,11 @@
-# 📊 KlearCharts
+# KlearCharts
 
 KlearCharts is a lightweight, SVG-based charting library designed for simplicity, high performance, and easy customization. Built with React and TypeScript, it provides a collection of beautiful and interactive charts for data visualization.
 
 ### Read the documentation
 [https://klearcharts.pages.dev](https://klearcharts.pages.dev)
 
-## 🚀 Installation
+## Installation
 
 ```bash
 npm install klearcharts
@@ -15,7 +15,7 @@ yarn add klearcharts
 
 ---
 
-## 📘 Available Charts
+## Available Charts
 
 ### Bar Chart
 
