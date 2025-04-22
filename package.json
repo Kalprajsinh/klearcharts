@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/Kalprajsinh/klearcharts/issues"
   },
-  "homepage": "https://github.com/Kalprajsinh/klearcharts#readme",
+  "homepage": "https://klearcharts.pages.dev",
   "devDependencies": {
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-typescript": "^11.1.6",
