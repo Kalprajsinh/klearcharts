@@ -1,7 +1,9 @@
-
 # 📊 KlearCharts
 
 KlearCharts is a lightweight, SVG-based charting library designed for simplicity, high performance, and easy customization. Built with React and TypeScript, it provides a collection of beautiful and interactive charts for data visualization.
+
+### Read the documentation
+[https://klearcharts.pages.dev](https://klearcharts.pages.dev)
 
 ## 🚀 Installation
 
@@ -17,13 +19,6 @@ yarn add klearcharts
 
 ### Bar Chart
 
-<table>
-  <tr>
-    <td width="280">
-      <img src="https://github.com/user-attachments/assets/54a817ad-e575-4a83-bd14-83dd10a6a6de" width="250"/>
-    </td>
-    <td>
-
 ```javascript
 import { BarChart } from 'klearcharts';
 
@@ -37,19 +32,9 @@ import { BarChart } from 'klearcharts';
 />
 ```
 
-  </tr>
-</table>
-
 ---
 
 ### Line Chart
-
-<table>
-  <tr>
-    <td width="280">
-      <img src="https://github.com/user-attachments/assets/e5a5e3e8-e37b-4159-9a49-7832596f2049" width="250"/>
-    </td>
-    <td>
 
 ```javascript
 import { LineChart } from 'klearcharts';
@@ -70,19 +55,9 @@ import { LineChart } from 'klearcharts';
 />
 ```
 
-  </tr>
-</table>
-
 ---
 
 ### Pie Chart
-
-<table>
-  <tr>
-    <td width="280">
-      <img src="https://github.com/user-attachments/assets/dadda9a1-6a51-471d-b493-224d4b59ad23" width="250"/>
-    </td>
-    <td>
 
 ```javascript
 import { PieChart } from 'klearcharts';
@@ -103,19 +78,9 @@ import { PieChart } from 'klearcharts';
 />
 ```
 
-  </tr>
-</table>
-
 ---
 
 ### Area Chart
-
-<table>
-  <tr>
-    <td width="280">
-      <img src="https://github.com/user-attachments/assets/8fe5b59f-fc15-477d-bea7-e20e5dc9b8de" width="250"/>
-    </td>
-    <td>
 
 ```javascript
 import { AreaChart } from 'klearcharts';
@@ -139,19 +104,9 @@ import { AreaChart } from 'klearcharts';
 />
 ```
 
-  </tr>
-</table>
-
 ---
 
 ### Scatter Chart
-
-<table>
-  <tr>
-    <td width="280">
-      <img src="https://github.com/user-attachments/assets/fe6f5ac9-4aa5-480a-ae6b-a17cd77688f2" width="250"/>
-    </td>
-    <td>
 
 ```javascript
 import { ScatterChart } from 'klearcharts';
@@ -174,19 +129,9 @@ import { ScatterChart } from 'klearcharts';
 />
 ```
 
-  </tr>
-</table>
-
 ---
 
 ### Histogram Chart
-
-<table>
-  <tr>
-    <td width="280">
-      <img src="https://github.com/user-attachments/assets/aef8f3cb-cd1c-47bf-aafb-2c5ee45a8416" width="250"/>
-    </td>
-    <td>
 
 ```javascript
 import { HistogramChart } from 'klearcharts';
@@ -202,19 +147,9 @@ import { HistogramChart } from 'klearcharts';
 />
 ```
 
-  </tr>
-</table>
-
 ---
 
 ### Waterfall Chart
-
-<table>
-  <tr>
-    <td width="280">
-      <img src="https://github.com/user-attachments/assets/744abcd3-8769-4910-9239-9f3a14c3ea0d" width="250"/>
-    </td>
-    <td>
 
 ```javascript
 import { WaterfallChart } from 'klearcharts';
@@ -236,8 +171,5 @@ import { WaterfallChart } from 'klearcharts';
   animate={true}
 />
 ```
-
-  </tr>
-</table>
 
 ---
