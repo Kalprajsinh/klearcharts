@@ -85,12 +85,9 @@ export function PieChart({
       onmouseenter="
         const tooltip = document.createElementNS('http://www.w3.org/2000/svg', 'g');
         tooltip.innerHTML = \`
-          <rect x='${tooltipX - 60}' y='${tooltipY - 30}' width='80' height='40' fill='#1f2937' rx='4'/>
-          <text x='${tooltipX}' y='${tooltipY - 10}' text-anchor='middle' font-size='12' fill='white'>
-            ${slice.label}
-          </text>
-          <text x='${tooltipX}' y='${tooltipY + 10}' text-anchor='middle' font-size='12' fill='white'>
-            ${Math.round(percentage * 100)}%
+          <rect x='${tooltipX - 30}' y='${tooltipY - 30}' width='60' height='25' fill='#1f2937' rx='4'/>
+          <text x='${tooltipX}' y='${tooltipY - 15}' text-anchor='middle' font-size='12' fill='white'>
+             ${Math.round(percentage * 100)}%
           </text>
         \`;
         this.parentNode.appendChild(tooltip);

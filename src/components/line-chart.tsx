@@ -77,11 +77,11 @@ export function LineChart({
 
   svgContent += `<path d="${linePathD}" fill="none" stroke="${lineColor}" stroke-width="2"`;
 
-  const pathLength = data.length * 100;
+  const pathLength = data.length * 1000;
 
   if (animate) {
     svgContent += ` stroke-dasharray="${pathLength}" stroke-dashoffset="${pathLength}">`;
-    svgContent += `<animate attributeName="stroke-dashoffset" from="${pathLength}" to="0" dur="1.5s" begin="0.3s" fill="freeze" /></path>`;
+    svgContent += `<animate attributeName="stroke-dashoffset" from="${pathLength}" to="0" dur="2s" begin="0.3s" fill="freeze" /></path>`;
   } else {
     svgContent += ` />`;
   }

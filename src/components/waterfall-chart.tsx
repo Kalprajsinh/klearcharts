@@ -86,7 +86,7 @@ export function WaterfallChart({
     if (isTotal) {
       // Total bar starts from zero
       startY = padding + chartHeight - ((0 - minValue) / valueRange) * chartHeight;
-      endY = padding + chartHeight - ((totals[index] - minValue) / valueRange) * chartHeight;
+      endY = padding + chartHeight - ((item.value - minValue) / valueRange) * chartHeight;
     } else {
       // Regular bars
       const prevTotal = index === 0 ? 0 : totals[index - 1];
@@ -125,14 +125,12 @@ export function WaterfallChart({
         onmouseenter="this.setAttribute('opacity', '0.8');
           const tooltip = document.createElementNS('http://www.w3.org/2000/svg', 'g');
           tooltip.innerHTML = \`
-            <rect x='${x + barWidth / 2 - 60}' y='${Math.min(startY, endY) - 60}' width='120' height='50' fill='#1f2937' rx='4'/>
-            <text x='${x + barWidth / 2}' y='${Math.min(startY, endY) - 40}' text-anchor='middle' font-size='12' fill='white'>
-              ${item.label}
-            </text>
-            <text x='${x + barWidth / 2}' y='${Math.min(startY, endY) - 20}' text-anchor='middle' font-size='12' fill='white'>
-              ${isTotal ? `Total: ${item.value}` : `Value: ${item.value}`}
+            <rect x='${x + barWidth / 2 - 30}' y='${Math.min(startY, endY) - 30}' width='60' height='25' fill='#1f2937' rx='4'/>
+            <text x='${x + barWidth / 2}' y='${Math.min(startY, endY) - 15}' text-anchor='middle' font-size='12' fill='white'>
+              ${item.value}
             </text>
           \`;
+
           this.parentNode.appendChild(tooltip);
           this.addEventListener('mouseleave', () => {
             this.setAttribute('opacity', '1');
