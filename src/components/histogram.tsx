@@ -8,6 +8,8 @@ interface HistogramProps {
   barHoverColor?: string;
   animate?: boolean;
   string?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 export function Histogram({
@@ -18,6 +20,8 @@ export function Histogram({
   barHoverColor = "#2563eb",
   animate = true,
   string = false,
+  className,
+  style,
 }: HistogramProps) {
   if (!Array.isArray(data) || data.length === 0) {
     return string ? "" : <></>;
@@ -32,7 +36,6 @@ export function Histogram({
 
   let svgContent = `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
 
-  // Grid lines
   for (let i = 0; i <= 5; i++) {
     const y = padding + chartHeight - (i * chartHeight) / 5;
     const count = Math.round((maxCount * i) / 5);
@@ -40,7 +43,6 @@ export function Histogram({
     svgContent += `<text x="${padding - 5}" y="${y}" text-anchor="end" dominant-baseline="middle" font-size="10" fill="#6b7280">${count}</text>`;
   }
 
-  // Bars
   data.forEach((item, index) => {
     const barHeight = (item.x / maxCount) * chartHeight;
     const x = padding + index * (chartWidth / data.length) + 1;
@@ -78,7 +80,6 @@ export function Histogram({
 
     svgContent += `</rect>`;
 
-    // X-axis label
     svgContent += `<text x="${x + barWidth / 2}" y="${height - padding + 15}" text-anchor="middle" font-size="10" fill="#6b7280">${item.label}</text>`;
   });
 
@@ -87,6 +88,6 @@ export function Histogram({
   if (string) {
     return svgContent;
   } else {
-    return <div dangerouslySetInnerHTML={{ __html: svgContent }} />;
+    return <div className={className} style={style} dangerouslySetInnerHTML={{ __html: svgContent }} />;
   }
 }

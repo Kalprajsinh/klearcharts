@@ -13,6 +13,8 @@ interface PieChartProps {
   animate?: boolean;
   colors?: string[];
   string?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 export function PieChart({
@@ -23,6 +25,8 @@ export function PieChart({
   animate = true,
   colors = ["#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#ec4899", "#6366f1", "#14b8a6"],
   string = false,
+  className,
+  style,
 }: PieChartProps) {
   if (!Array.isArray(data) || data.length === 0) {
     return string ? '' : <></>;
@@ -41,14 +45,12 @@ export function PieChart({
     const percentage = slice.value / total;
     const endAngle = startAngle + percentage * 2 * Math.PI;
 
-    // Calculate path coordinates
     const x1 = centerX + radius * Math.cos(startAngle);
     const y1 = centerY + radius * Math.sin(startAngle);
     const x2 = centerX + radius * Math.cos(endAngle);
     const y2 = centerY + radius * Math.sin(endAngle);
     const largeArcFlag = endAngle - startAngle > Math.PI ? 1 : 0;
 
-    // Create slice path
     let d = `M ${centerX} ${centerY} `;
 
     if (donut) {
@@ -74,7 +76,6 @@ export function PieChart({
     const labelX = centerX + labelRadius * Math.cos(midAngle);
     const labelY = centerY + labelRadius * Math.sin(midAngle);
 
-    // Add hover effect coordinates
     const tooltipX = centerX + (radius + 20) * Math.cos(midAngle);
     const tooltipY = centerY + (radius + 20) * Math.sin(midAngle);
 
@@ -106,7 +107,6 @@ export function PieChart({
 
     svgContent += `</path>`;
 
-    // Add label
     if (percentage > 0.05) {
       svgContent += `<text 
         x="${labelX}" 
@@ -135,7 +135,7 @@ export function PieChart({
     return svgContent;
   } else {
     return (
-      <div dangerouslySetInnerHTML={{ __html: svgContent }} />
+      <div className={className} style={style} dangerouslySetInnerHTML={{ __html: svgContent }} />
     );
   }
 }

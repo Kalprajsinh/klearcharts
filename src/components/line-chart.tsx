@@ -13,6 +13,8 @@ interface LineChartProps {
   pointColor?: string;
   animate?: boolean;
   string?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 export function LineChart({
@@ -23,6 +25,8 @@ export function LineChart({
   pointColor = "#2563eb",
   animate = true,
   string = false,
+  className,
+  style,
 }: LineChartProps) {
   if (!Array.isArray(data) || data.length === 0) {
     return string ? '' : <></>;
@@ -34,22 +38,19 @@ export function LineChart({
   const chartWidth = width - padding * 2;
   const chartHeight = height - padding * 2;
 
-  // Find data ranges
   const xValues = data.map((d) => d.x);
   const yValues = data.map((d) => d.y);
 
   const xMin = Math.min(...xValues);
   const xMax = Math.max(...xValues);
-  const yMin = 0; // Start from 0 for area charts
-  const yMax = Math.max(...yValues) * 1.1; // Add 10% padding
+  const yMin = 0;
+  const yMax = Math.max(...yValues) * 1.1;
 
-  // Scale factors
   const xScale = chartWidth / (xMax - xMin || 1);
   const yScale = chartHeight / (yMax - yMin || 1);
 
   let svgContent = `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
 
-  // Create grid lines
   for (let i = 0; i <= 5; i++) {
     const y = padding + chartHeight - (i * chartHeight) / 5;
     const value = Math.round((yMax * i) / 5);
@@ -58,7 +59,6 @@ export function LineChart({
     svgContent += `<text x="${padding - 10}" y="${y}" text-anchor="end" dominant-baseline="middle" font-size="10" fill="#6b7280">${value}</text>`;
   }
 
-  // Create x-axis labels
   const xStep = Math.max(1, Math.floor(data.length / 5));
   for (let i = 0; i < data.length; i += xStep) {
     const point = data[i];
@@ -67,7 +67,6 @@ export function LineChart({
     svgContent += `<text x="${x}" y="${height - padding + 15}" text-anchor="middle" font-size="10" fill="#6b7280">${point.x}</text>`;
   }
 
-  // Create line path
   let linePathD = "";
   data.forEach((point, index) => {
     const x = padding + (point.x - xMin) * xScale;
@@ -120,7 +119,7 @@ export function LineChart({
     return svgContent;
   } else {
     return (
-      <div dangerouslySetInnerHTML={{ __html: svgContent }} />
+      <div className={className} style={style} dangerouslySetInnerHTML={{ __html: svgContent }} />
     );
   }
 }

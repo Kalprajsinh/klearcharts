@@ -14,6 +14,8 @@ interface WaterfallChartProps {
   totalColor?: string;
   animate?: boolean;
   string?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 export function WaterfallChart({
@@ -25,6 +27,8 @@ export function WaterfallChart({
   totalColor = "#3b82f6",
   animate = true,
   string = false,
+  className,
+  style,
 }: WaterfallChartProps) {
   if (!Array.isArray(data) || data.length === 0) {
     return string ? '' : <></>;
@@ -171,7 +175,7 @@ export function WaterfallChart({
     return svgContent;
   } else {
     return (
-      <div dangerouslySetInnerHTML={{ __html: svgContent }} />
+      <div className={className} style={style} dangerouslySetInnerHTML={{ __html: svgContent }} />
     );
   }
 }

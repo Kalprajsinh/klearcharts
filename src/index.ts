@@ -1,11 +1,7 @@
 export * from "./components/area_chart";
-// export * from "./components/bar-chart";
 export * from "./components/barchart";
-// export * from "./components/boxplot";
 export * from "./components/bubble-chart";
-// export * from "./components/gantt-chart";
 export * from "./components/histogram";
 export * from "./components/line-chart";
 export * from "./components/pie-chart";
-// export * from "./components/radar-chart";
 export * from "./components/waterfall-chart";

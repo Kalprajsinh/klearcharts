@@ -1,12 +1,14 @@
 import * as React from "react";
 
-function BarChart({ data, height = 200, width = 400, barColor = '#4f46e5',animate, string = false }: {
+function BarChart({ data, height = 200, width = 400, barColor = '#4f46e5',animate, string = false, className, style }: {
   data: number[];
   height?: number;
   width?: number;
   barColor?: string;
   animate?:boolean;
   string?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
 }) {
 
   if (!Array.isArray(data) || data.length === 0) return '';
@@ -19,7 +21,6 @@ function BarChart({ data, height = 200, width = 400, barColor = '#4f46e5',animat
 
   let svgContent = `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
 
-  // grid
   for (let i = 0; i <= 5; i++) {
     const y = padding + chartHeight - (i * chartHeight) / 5;
     svgContent += `<line x1="${padding}" y1="${y}" x2="${width - padding}" y2="${y}" stroke="#e5e7eb" stroke-width="1" />`;
@@ -30,7 +31,7 @@ function BarChart({ data, height = 200, width = 400, barColor = '#4f46e5',animat
     const barHeight = (value / maxValue) * chartHeight;
     const x = padding + index * (chartWidth / data.length) + 5;
     const finalY = height - padding - barHeight;
-    const duration = 0.5 + index * 0.1; // stagger animation for effect
+    const duration = 0.5 + index * 0.1;
 
     svgContent += `<rect 
       x="${x}" 
@@ -74,8 +75,8 @@ function BarChart({ data, height = 200, width = 400, barColor = '#4f46e5',animat
     return svgContent;
   } else {
     return (
-      <div className="chart-container">
-        <div className="chart" dangerouslySetInnerHTML={{ __html: svgContent }} />
+      <div className={className} style={style}>
+        <div dangerouslySetInnerHTML={{ __html: svgContent }} />
       </div>
     );
   }

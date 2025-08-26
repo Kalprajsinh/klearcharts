@@ -16,6 +16,8 @@ interface ScatterPlotProps {
   pointOpacity?: number;
   animate?: boolean;
   string?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 export function ScatterPlot({
@@ -28,6 +30,8 @@ export function ScatterPlot({
   pointOpacity = 0.7,
   animate = true,
   string = false,
+  className,
+  style,
 }: ScatterPlotProps) {
   if (!Array.isArray(data) || data.length === 0) {
     return string ? '' : <></>;
@@ -50,19 +54,13 @@ export function ScatterPlot({
 
   let svgContent = `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
 
-  // Create axes
   svgContent += `
-    <!-- X-axis -->
     <line x1="${padding}" y1="${height - padding}" x2="${width - padding}" y2="${height - padding}" stroke="#e5e7eb" stroke-width="1" />
-    <!-- Y-axis -->
     <line x1="${padding}" y1="${padding}" x2="${padding}" y2="${height - padding}" stroke="#e5e7eb" stroke-width="1" />
-    <!-- X-axis label -->
     <text x="${width / 2}" y="${height - 10}" text-anchor="middle" font-size="12" fill="#6b7280">${xAxisLabel}</text>
-    <!-- Y-axis label -->
     <text x="15" y="${height / 2}" text-anchor="middle" font-size="12" fill="#6b7280" transform="rotate(-90, 15, ${height / 2})">${yAxisLabel}</text>
   `;
 
-  // X-axis ticks
   for (let i = 0; i <= 5; i++) {
     const x = padding + (i * chartWidth) / 5;
     const xVal = xMin + (i * (xMax - xMin)) / 5;
@@ -73,7 +71,6 @@ export function ScatterPlot({
     `;
   }
 
-  // Y-axis ticks
   for (let i = 0; i <= 5; i++) {
     const y = height - padding - (i * chartHeight) / 5;
     const yVal = yMin + (i * (yMax - yMin)) / 5;
@@ -84,7 +81,6 @@ export function ScatterPlot({
     `;
   }
 
-  // Create points
   data.forEach((point, index) => {
     const cx = padding + (point.x - xMin) * xScale;
     const cy = height - padding - (point.y - yMin) * yScale;
@@ -135,7 +131,7 @@ export function ScatterPlot({
     return svgContent;
   } else {
     return (
-      <div dangerouslySetInnerHTML={{ __html: svgContent }} />
+      <div className={className} style={style} dangerouslySetInnerHTML={{ __html: svgContent }} />
     );
   }
 }

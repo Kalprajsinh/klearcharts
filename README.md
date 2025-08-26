@@ -13,8 +13,6 @@ npm install klearcharts
 yarn add klearcharts
 ```
 
----
-
 ## Available Charts
 
 ### Bar Chart
@@ -27,7 +25,6 @@ import { BarChart } from 'klearcharts';
   height={300}
   width={600}
   barColor="#10b981"
-  hoverColor="#059669"
   animate={true}
 />
 ```
@@ -106,10 +103,10 @@ import { AreaChart } from 'klearcharts';
 
 ---
 
-### Scatter Chart
+### Scatter Plot
 
 ```javascript
-import { ScatterChart } from 'klearcharts';
+import { ScatterPlot } from 'klearcharts';
 
 <ScatterPlot
   data={[
@@ -131,14 +128,26 @@ import { ScatterChart } from 'klearcharts';
 
 ---
 
-### Histogram Chart
+### Histogram
 
 ```javascript
-import { HistogramChart } from 'klearcharts';
+import { Histogram } from 'klearcharts';
 
 <Histogram
-  data={[12, 15, 18, 22, 25, 26, 28, 30, 32, 35, 38, 40]}
-  bins={6}
+  data={[
+    { x: 12, label: "A" },
+    { x: 15, label: "B" },
+    { x: 18, label: "C" },
+    { x: 22, label: "D" },
+    { x: 25, label: "E" },
+    { x: 26, label: "F" },
+    { x: 28, label: "G" },
+    { x: 30, label: "H" },
+    { x: 32, label: "I" },
+    { x: 35, label: "J" },
+    { x: 38, label: "K" },
+    { x: 40, label: "L" }
+  ]}
   height={300}
   width={600}
   barColor="#10b981"
@@ -171,5 +180,46 @@ import { WaterfallChart } from 'klearcharts';
   animate={true}
 />
 ```
+
+---
+
+## Styling
+
+All chart components accept `className` and `style` props for easy layout and spacing control.
+
+```tsx
+import { LineChart } from 'klearcharts';
+
+<LineChart
+  data={[{ x: 10, y: 20 }, { x: 25, y: 35 }]}
+  height={300}
+  width={600}
+  className="mt-6 px-4"
+  style={{ border: '1px solid #e5e7eb'}}
+/>
+```
+---
+## Backend/SSR usage
+
+Pass `string={true}` to receive the raw SVG string instead of a React element. This is useful for server-side rendering or APIs that return SVG.
+
+```javascript
+import { LineChart } from 'klearcharts';
+
+const svg = LineChart({
+  data: [
+    { x: 10, y: 20 },
+    { x: 25, y: 35 }
+  ],
+  height: 300,
+  width: 600,
+  string: true
+});
+
+```
+
+All components support this flag: `BarChart`, `LineChart`, `AreaChart`, `PieChart`, `ScatterPlot`, `Histogram`, and `WaterfallChart`.
+
+---
 
 ---
